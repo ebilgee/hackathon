@@ -209,7 +209,7 @@ class Mymodel
         
         unset($_SESSION[$sessionvar]);
         
-        $this->RedirectToURL("../");
+        $this->RedirectToURL("./");
     }
 
     function CheckLoginInDB($useremail,$password)
