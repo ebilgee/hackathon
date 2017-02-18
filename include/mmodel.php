@@ -159,22 +159,34 @@ class Mymodel
         return true;
         }
     }
+    function CheckLogin()
+    {   
+        if(!isset($_SESSION)){
+            session_start(); 
+        }
 
+        $sessionvar = $this->GetLoginSessionVar();
+        
+        if(empty($_SESSION[$sessionvar])){
+            return false;
+        }
+        return true;
+    }
 
      function Login(){
 
-        if(empty($_POST['login_email'])){
+        if(empty($_POST['email'])){
             $this->HandleError("Имэйл хаяг оруулна уу!");
             return false;
         }
         
-        if(empty($_POST['login_password'])){
+        if(empty($_POST['password'])){
             $this->HandleError("Нууц үг оруулна уу!");
             return false;
         }
         
-        $useremail = trim($_POST['login_email']);
-        $password = trim($_POST['login_password']);
+        $useremail = trim($_POST['email']);
+        $password = trim($_POST['password']);
         
         if(!isset($_SESSION)){ 
             session_start();
@@ -199,7 +211,8 @@ class Mymodel
         $user_email = $useremail;
         $pssw = crypt($password,'$6$rounds=5000$gyshido$');
         
-        $qry = "SELECT user_id, user_name FROM users WHERE user_email='$user_email' AND user_password='$pssw'";
+        $qry = "SELECT user_id FROM logins WHERE login_email='$user_email' AND login_password='$pssw'";
+        echo $qry;
         $result = mysqli_query($this->connection, $qry);
         if(!$result || mysqli_num_rows($result) <= 0)
         {

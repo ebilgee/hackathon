@@ -1,20 +1,24 @@
 <?php
+header('Content-type: text/html; charset=utf-8');
 require_once("include/config.php");
 if(!isset($_SESSION)){
     session_start(); 
 }
 
+if($mmodel->CheckLogin()){
+	 $mmodel->RedirectToURL("./dash.php");
+}
 
-if(isset($_POST['submitted']))
+if(isset($_POST['loginsubmit']))
 {
-   	if($mmodel->RegisterUser())
-   	{
-		$mmodel->RedirectToURL("");
-   	}
-   	else{
-   		$mmodel->RedirectToURL("");
+	
+   if($mmodel->Login())
+   {
+        $mmodel->RedirectToURL("./dash");
    }
-}?>
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -195,13 +199,14 @@ if(isset($_POST['submitted']))
 					<h3>Login to your Account</h3>
 					<form class="form-grey-fields" action='<?php echo $mmodel->GetSelfScript(); ?>' method='post'>
 						<div class="form-group">
-							<label class="sr-only">Username or Email</label>
-							<input type="text" placeholder="Username or Email" class="form-control">
+							<label class="sr-only"> Email</label>
+							<input type="text" placeholder="Email" class="form-control" name="email">
 
 						</div>
 						<div class="form-group m-b-5">
 							<label class="sr-only">Password</label>
-							<input type="password" placeholder="Password" class="form-control">
+							<input type="password" placeholder="Password" class="form-control" name="password">
+							<input type='hidden' name='loginsubmit' id='loginsubmit' value='1'/>
 						</div>
 						<div class="form-group form-inline text-left m-b-10 ">
 
@@ -213,8 +218,8 @@ if(isset($_POST['submitted']))
 							<a class="right" href="#"><small>Lost your Password?</small></a>
 						</div>
 						<div class="text-left form-group">
-							<button class="btn btn-danger red" type="button">Login</button>
-
+							<button class="btn btn-danger red" type="submit">Login</button>
+							
 						</div>
 					</form>
 					
