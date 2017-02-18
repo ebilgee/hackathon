@@ -54,7 +54,7 @@ CREATE TABLE payments (
                 payment_status_id INT NOT NULL,
                 user_id BIGINT NOT NULL,
                 payment_time DATETIME NOT NULL,
-                payment_amount DOUBLE PRECISIONS NOT NULL,
+                payment_amount DOUBLE NOT NULL,
                 payment_note VARCHAR(200),
                 PRIMARY KEY (payment_id)
 );
@@ -65,7 +65,7 @@ CREATE TABLE Recordings (
                 location_id BIGINT NOT NULL,
                 user_id BIGINT NOT NULL,
                 recording_location VARCHAR(100) NOT NULL,
-                recording_duration DOUBLE PRECISIONS,
+                recording_duration DOUBLE,
                 recording_name VARCHAR(100),
                 PRIMARY KEY (recording_id)
 );
