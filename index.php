@@ -34,7 +34,7 @@
 
 					<!--lOOGO-->
 					<div id="logo">
-						<a href="index.html" class="logo" data-dark-logo="images/logo.png">
+						<a href="index.php" class="logo" data-dark-logo="images/logo.png">
 							<img src="images/logo.png">
 						</a>
 					</div>
@@ -44,9 +44,9 @@
 						<div class="container">
 							<nav id="mainMenu" class="main-menu mega-menu">
 								<ul class="main-menu nav nav-pills">
-									<li class="dropdown"><a href="index.html#about">About</a>
+									<li class="dropdown"><a href="index.php#about">About</a>
 									</li>
-									<li class="dropdown"><a href="index.html#contact">Contact</a>
+									<li class="dropdown"><a href="index.php#contact">Contact</a>
 									</li>
 									
 									<li class="dropdown mega-menu-item"> <a href="#">Locations<i class="fa fa-angle-down"></i></a>

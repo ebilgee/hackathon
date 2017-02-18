@@ -57,7 +57,7 @@ if(isset($_POST['loginsubmit']))
 
 					<!--lOOGO-->
 					<div id="logo">
-						<a href="index.html" class="logo" data-dark-logo="images/logo.png">
+						<a href="index.php" class="logo" data-dark-logo="images/logo.png">
 							<img src="images/logo.png">
 						</a>
 					</div>
@@ -67,9 +67,9 @@ if(isset($_POST['loginsubmit']))
 						<div class="container">
 							<nav id="mainMenu" class="main-menu mega-menu">
 								<ul class="main-menu nav nav-pills">
-									<li class="dropdown"><a href="index.html">About</a>
+									<li class="dropdown"><a href="index.php">About</a>
 									</li>
-									<li class="dropdown"><a href="index.html">Contact</a>
+									<li class="dropdown"><a href="index.php">Contact</a>
 									</li>
 									
 									<li class="dropdown mega-menu-item"> <a href="#">Locations<i class="fa fa-angle-down"></i></a>
@@ -229,7 +229,7 @@ if(isset($_POST['loginsubmit']))
 					<a class="button blue fullwidth rounded" href="#"><i class="fa fa-twitter"></i>  Twitter</a>
 					<a class="button black-light fullwidth rounded" href="#"><i class="fa fa-linkedin"></i>  Linkedin</a>
 <br>
-					<p class="text-left">Don't have an account yet? <a href="#">Register New Account</a>
+					<p class="text-left">Don't have an account yet? <a href="register.php">Register New Account</a>
 					</p>
 				</div>
 			</div>

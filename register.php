@@ -51,7 +51,7 @@ if(isset($_POST['submitted']))
 
 					<!--lOOGO-->
 					<div id="logo">
-						<a href="index.html" class="logo" data-dark-logo="images/logo.png">
+						<a href="index.php" class="logo" data-dark-logo="images/logo.png">
 							<img src="images/logo.png">
 						</a>
 					</div>
@@ -61,9 +61,9 @@ if(isset($_POST['submitted']))
 						<div class="container">
 							<nav id="mainMenu" class="main-menu mega-menu">
 								<ul class="main-menu nav nav-pills">
-									<li class="dropdown"><a href="index.html">About</a>
+									<li class="dropdown"><a href="index.php">About</a>
 									</li>
-									<li class="dropdown"><a href="index.html">Contact</a>
+									<li class="dropdown"><a href="index.php">Contact</a>
 									</li>
 									
 									<li class="dropdown mega-menu-item"> <a href="#">Locations<i class="fa fa-angle-down"></i></a>

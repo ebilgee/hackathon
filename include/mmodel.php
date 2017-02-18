@@ -199,6 +199,19 @@ class Mymodel
         return true;
     }
 
+    function LogOut()
+    {
+        session_start();
+        
+        $sessionvar = $this->GetLoginSessionVar();
+        
+        $_SESSION[$sessionvar] = NULL;
+        
+        unset($_SESSION[$sessionvar]);
+        
+        $this->RedirectToURL("../");
+    }
+
     function CheckLoginInDB($useremail,$password)
     {
         //echo "".$useremail." - ".$password;

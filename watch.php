@@ -48,7 +48,7 @@ if($mmodel->CheckLogin())
 
 					<!--lOOGO-->
 					<div id="logo">
-						<a href="index.html" class="logo" data-dark-logo="images/logo.png">
+						<a href="index.php" class="logo" data-dark-logo="images/logo.png">
 							<img src="images/logo.png">
 						</a>
 					</div>
@@ -58,9 +58,9 @@ if($mmodel->CheckLogin())
 						<div class="container">
 							<nav id="mainMenu" class="main-menu mega-menu">
 								<ul class="main-menu nav nav-pills">
-									<li class="dropdown"><a href="index.html">About</a>
+									<li class="dropdown"><a href="index.php">About</a>
 									</li>
-									<li class="dropdown"><a href="index.html">Contact</a>
+									<li class="dropdown"><a href="index.php">Contact</a>
 									</li>
 									
 									<li class="dropdown mega-menu-item"> <a href="#">Locations<i class="fa fa-angle-down"></i></a>
@@ -207,6 +207,11 @@ if($mmodel->CheckLogin())
 		<div class="col-md-12" style="margin-top:80px">
 		<p>Constructed from 1887–89 as the entrance to the 1889 World's Fair, it was initially criticized by some of France's leading artists and intellectuals for its design, but it has become a global cultural icon of France and one of the most recognisable structures in the world.[3] The Eiffel Tower is the most-visited paid monument in the world; 6.91 million people ascended it in 2015.</p><p>
 The tower is 324 metres (1,063 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930. Due to the addition of a broadcasting aerial at the top of the tower in 1957, it is now taller than the Chrysler Building by 5.2 metres (17 ft). Excluding transmitters, the Eiffel Tower is the second-tallest structure in France after the Millau Viaduct.</p>
+<a href="http://www.accuweather.com/en/fr/paris/623/weather-forecast/623" class="aw-widget-legal">
+<!--
+By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
+-->
+</a><div id="awtd1487426650642" class="aw-widget-36hour"  data-locationkey="623" data-unit="f" data-language="en-us" data-useip="false" data-uid="awtd1487426650642" data-editlocation="false"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
 </div>
 	</div>
 </section>

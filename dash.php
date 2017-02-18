@@ -36,7 +36,7 @@
 
 					<!--lOOGO-->
 					<div id="logo">
-						<a href="index.html" class="logo" data-dark-logo="images/logo.png">
+						<a href="index.php" class="logo" data-dark-logo="images/logo.png">
 							<img src="images/logo.png">
 						</a>
 					</div>
@@ -116,7 +116,6 @@
     map.addLayer(markers);
     
     markers.addMarker(new OpenLayers.Marker(lonLat));
-    markers.addMarker(new OpenLayers.Marker(lonLat1));
     
     map.setCenter (lonLat, zoom);
   </script>
