@@ -44,9 +44,9 @@
 						<div class="container">
 							<nav id="mainMenu" class="main-menu mega-menu">
 								<ul class="main-menu nav nav-pills">
-									<li class="dropdown"><a href="index.html">About</a>
+									<li class="dropdown"><a href="index.html#about">About</a>
 									</li>
-									<li class="dropdown"><a href="index.html">Contact</a>
+									<li class="dropdown"><a href="index.html#contact">Contact</a>
 									</li>
 									
 									<li class="dropdown mega-menu-item"> <a href="#">Locations<i class="fa fa-angle-down"></i></a>
@@ -59,7 +59,7 @@
 														</ul>
 														<div class="col-md-6">
 															<ul>
-																<li> <a href="#">France</a> </li>
+																<li> <a href="locations.php?l=FR">France</a> </li>
 																<li> <a href="#">Germany</a> </li>
 																<li> <a href="#">Netherland</a> </li>
 																<li> <a href="#">Sweden</a> </li>
@@ -173,10 +173,10 @@
 					<div class="text-middle text-center text-light">
 						<center style="margin-top:500px">
 						<div class="text-middle text-center text-light">
-							<a class="button button-dark rounded red" href="#">Login Now</a>						
+							<a class="button button-dark rounded red" href="login.php">Login Now</a>						
 						</div>
 						<div class="text-middle text-center text-light">
-							<a class="button button-light rounded" href="#">Sign Up</a>						
+							<a class="button button-light rounded" href="register.php">Sign Up</a>						
 						</div>
 						</center>				
 					</div>
@@ -251,7 +251,7 @@
 					</li>
 				</ul>
 				<div class="heading heading-center">
-					<a class="button red button-dark rounded" href="#">All Locations</a>
+					<a class="button red button-dark rounded" href="locations.php?l=FR">All Locations</a>
 				</div>
 			</div>
 		</section>

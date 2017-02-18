@@ -10,7 +10,7 @@ if(isset($_POST['submitted']))
 
    	if($mmodel->RegisterUser())
    	{
-		//$mmodel->RedirectToURL("");
+		$mmodel->RedirectToURL("index.php");
    	}
 }?>
 <!DOCTYPE html>

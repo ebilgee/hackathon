@@ -46,9 +46,11 @@
 						<div class="container">
 							<nav id="mainMenu" class="main-menu mega-menu">
 								<ul class="main-menu nav nav-pills">
-									<li class="dropdown"><a href="index.html">My Account</a>
+									<li class="dropdown"><a href="index.php">My Account</a>
 									</li>
-									<li class="dropdown"><a href="index.html">Log Out</a>
+									<li class="dropdown"><a href="watch.php">Locations</a>
+									</li>
+									<li class="dropdown"><a href="logout.php">Log Out</a>
 									</li>
 									
 									
@@ -93,7 +95,31 @@
 
 	<div class="container">
 		<h3>Near Live Cams</h3>
-		<div class="col-md-12"></div>
+		<div class="col-md-12">
+			
+		</div>
+		<div id="mapdiv" style="width:100%; height:300px"></div>
+  <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+  <script>
+    map = new OpenLayers.Map("mapdiv");
+    map.addLayer(new OpenLayers.Layer.OSM());
+
+    var lonLat = new OpenLayers.LonLat( -0.1279688 ,51.5077286 )
+          .transform(
+            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+          );
+     
+    var zoom=16;
+
+    var markers = new OpenLayers.Layer.Markers( "Markers" );
+    map.addLayer(markers);
+    
+    markers.addMarker(new OpenLayers.Marker(lonLat));
+    markers.addMarker(new OpenLayers.Marker(lonLat1));
+    
+    map.setCenter (lonLat, zoom);
+  </script>
 	</div>
 </section>
 <!-- END: SECTION -->

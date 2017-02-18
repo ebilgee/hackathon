@@ -1,3 +1,15 @@
+<?php
+require_once("include/config.php");
+$info ='';
+if($mmodel->CheckLogin())
+{
+	$info = "<a class='button green'>Take Picture</a><a class='button red-dark'>Record Video</a>";
+
+}else{
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -188,7 +200,7 @@
 	<div class="container">
 		<div class="col-md-11" style="height:560px; text-align:center">
 			<iframe 	allowfullscreen="" width="100%" height="100%" src="http://www.blitzvideoserver.de/player.html?serverip=46.105.54.176:80&amp;serverapp=64connections&amp;live=1&amp;autostart=1&amp;stream720p=Pariscam3.stream&amp;playerbreite=1280&amp;playerhoehe=720"></iframe>
-			<a class="button blue-dark"><span class="fa fa-facebook"></span></a><a class="button blue"><span class="fa fa-twitter"></span></a><a class="button grey">Link</a>
+			<a class="button blue-dark" href="http://www.facebook.com/sharer.php?u=http://lonelyplanet.com" target="_blank"><span class="fa fa-facebook"></span></a><a class="button blue" href="https://twitter.com/share?url=https://heyimlive.com&amp;text=Hey%20check%20it%20out%20Im%20here%20in%20Antarctica&amp;hashtags=HeyImLive" target="_blank"><span class="fa fa-twitter"></span></a><a class="button grey">Link</a><?php echo $info;?>
 		</div>
 		
 

@@ -82,7 +82,7 @@ if(isset($_POST['loginsubmit']))
 														</ul>
 														<div class="col-md-6">
 															<ul>
-																<li> <a href="#">France</a> </li>
+																<li> <a href="locations.php?l=FR">France</a> </li>
 																<li> <a href="#">Germany</a> </li>
 																<li> <a href="#">Netherland</a> </li>
 																<li> <a href="#">Sweden</a> </li>
