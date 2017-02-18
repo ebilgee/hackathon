@@ -199,7 +199,7 @@ if($mmodel->CheckLogin())
 	<div class="container">
 		<h3>Paris</h3>
 		<div class="col-md-3">
-			<a href=""><img style="width:100%" src="images/locations/6.jpg"></a>
+			<a href="watch.php"><img style="width:100%" src="images/locations/6.jpg"></a>
 			<h5>Eiffel Tower</h5>
 		</div>
 		<div class="col-md-3">

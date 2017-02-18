@@ -3,7 +3,7 @@ require_once("include/config.php");
 $info ='';
 if($mmodel->CheckLogin())
 {
-	$info = "<a class='button green'>Take Picture</a><a class='button red-dark'>Record Video</a>";
+	$info = "<a class='button green'>Take Picture</a><a href='stream.php' class='button red-dark'>Record Video</a>";
 
 }else{
 

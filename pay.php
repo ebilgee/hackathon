@@ -1,13 +1,15 @@
 <?php
 require_once("include/config.php");
 $info ='';
-if($mmodel->CheckLogin())
-{
-	$info = "<a class='button green'>Take Picture</a><a class='button red-dark'>Record Video</a>";
+$total='';
+$duration='';
 
-}else{
-
+if(isset($_POST['dur'])){
+	$duration=$_POST['dur'];
+	$total=$duration/10+1;
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ if($mmodel->CheckLogin())
 	</head>
 
 
-<body class="wide" >
+<body class="wide">
 	
 
 	<!-- WRAPPER -->
@@ -186,7 +188,7 @@ if($mmodel->CheckLogin())
 <section id="page-title" class="background-dark text-light no-padding">
     <div class="container">
         <div class="page-title col-md-8" style="margin-top:15px">
-            <h1 >Live: Omaha Nebraska</h1>
+            <h1 >Buy Recording</h1>
             
         </div>
         
@@ -194,163 +196,159 @@ if($mmodel->CheckLogin())
 </section>
 <!-- END: PAGE TITLE -->
 
-
-<!-- SECTION -->
-<section>
+<!-- SHOP CHECKOUT -->
+<section id="shop-checkout">
 	<div class="container">
-		<div class="col-md-11" style=" text-align:center">
-			 <video autoplay style="height:500px; width: 720px;" id="vid"></video>
-			 <h1 id="timerdd"><time>00:00:00</time></h1>
-      			<p><button class="btn btn-lg btn-primary" onclick="getStream()">Start Record</button><button class="btn btn-lg btn-primary" onclick="download()">Finish & Download!</button>
-      			<button class="btn btn-lg btn-confirm" onclick="Pay()">Pay</button>
-      			</p>
-		</div>
-		
+		<div class="shop-cart">
+			<form method="post" class="sep-top-md">
+				<div class="row">
+					<div class="col-md-6 no-padding">
+						<div class="col-md-12">
+							<h4 class="upper">Billing & Shipping Address</h4>
+						</div>
+						<div class="col-md-12 form-group">
+							<label class="sr-only">Card Number</label>
+							<input type="text" class="form-control input-lg" placeholder="Card Number" value="">
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="sr-only">First Name</label>
+							<input type="text" class="form-control input-lg" placeholder="First Name" value="">
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="sr-only">Last Name</label>
+							<input type="text" class="form-control input-lg" placeholder="Last Name" value="">
+						</div>
+						<div class="col-md-12 form-group">
+							<label class="sr-only">CVV</label>
+							<input type="text" class="form-control input-lg" placeholder="CVV" value="">
+						</div>
+						<div class="col-md-12 form-group">
+							<label class="sr-only">Address</label>
+							<input type="text" class="form-control input-lg" placeholder="Address" value="">
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="sr-only">Town / City</label>
+							<input type="text" class="form-control input-lg" placeholder="Town / City" value="">
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="sr-only">State / County</label>
+							<input type="text" class="form-control input-lg" placeholder="State / County" value="">
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="sr-only">Postcode / Zip</label>
+							<input type="text" class="form-control input-lg" placeholder="Postcode / Zip" value="">
+						</div>
+						<div class="col-md-6 form-group">
+							<label class="sr-only">Phone</label>
+							<input type="text" class="form-control input-lg" placeholder="Phone" value="">
+						</div>
+						
+					</div>
 
-		<div class="col-md-12" style="margin-top:80px">
-		
+					<div class="col-md-6">
+					<div class="table-responsive">
+						<h4>Order Total</h4>
+
+						<table class="table">
+							<tbody>
+								<tr>
+									<td class="cart-product-name">
+										<strong>Order Fixed</strong>
+									</td>
+
+									<td class="cart-product-name text-right">
+										<span class="amount">$1</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="cart-product-name">
+										<strong>Record Duration</strong>
+									</td>
+
+									<td class="cart-product-name  text-right">
+										<span class="amount"><?php echo $duration;?></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="cart-product-name">
+										<strong>Per second</strong>
+									</td>
+
+									<td class="cart-product-name  text-right">
+										<span class="amount">10 cents</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="cart-product-name">
+										<strong>Total</strong>
+									</td>
+
+									<td class="cart-product-name text-right">
+										<span class="amount color lead"><strong>$<?php echo $total;?></strong></span>
+									</td>
+								</tr>
+							</tbody>
+
+						</table>
+
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h4 class="upper">Payment Method</h4>
+
+					<table class="payment-method table table-bordered table-condensed table-responsive">
+						<tbody>
+							<tr>
+								<td>
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" value=""><b class="dark">Direct Bank Transfer</b>
+											<br>
+										</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" value=""  checked=""> <b class="dark">Credit Card Payment</b>
+										</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="radio">
+										<label>
+											<input type="radio" name="optionsRadios" value="" >Paypal
+										</label>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<a class="button color button-3d rounded icon-left float-right" href="#"><span>Pay</span></a>
+				</div>
+
+					
+				</div>
+
+
+
+			</form>
+
+
+
 
 		</div>
 	</div>
 </section>
-<!-- END: SECTION -->
-<div id="hidden_container" style="display:none;"></div>
+<!-- END: SHOP CHECKOUT -->
+
 
 </div>
-<script type="text/javascript">
-    	
-var h1 = document.getElementById('timerdd'),
-    seconds = 0, minutes = 0, hours = 0, real = 0,
-    t;
 
-function add() {
-    seconds++;
-    real++;
-    if (seconds >= 60) {
-        seconds = 0;
-        minutes++;
-        if (minutes >= 60) {
-            minutes = 0;
-            hours++;
-        }
-    }
-    
-    h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-
-    timer();
-}
-function timer() {
-    t = setTimeout(add, 1000);
-}
-
-function Pay () {
-  var theForm, newInput1;
-  theForm = document.createElement('form');
-  theForm.action = 'pay.php';
-  theForm.method = 'post';
-  newInput1 = document.createElement('input');
-  newInput1.type = 'hidden';
-  newInput1.name = 'dur';
-  newInput1.value = ''+real;
-  theForm.appendChild(newInput1);
-  real = 0;
-  document.getElementById('hidden_container').appendChild(theForm);
-  // ...and submit it
-  theForm.submit();
-}
-
-
-    </script>
- <script>
-      
-      function getUserMedia(options, successCallback, failureCallback) {
-  var api = navigator.getUserMedia || navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia || navigator.msGetUserMedia;
-  if (api) {
-    return api.bind(navigator)(options, successCallback, failureCallback);
-  }
-  alert('User Media API not supported.');
-}
-
-var theStream;
-var theRecorder;
-var recordedChunks = [];
-
-var video = document.querySelector("#vid");
- 
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
- 
-if (navigator.getUserMedia) {       
-    navigator.getUserMedia({video: true}, handleVideo, videoError);
-}
- 
-function handleVideo(stream) {
-    video.src = window.URL.createObjectURL(stream);
-}
- 
-function videoError(e) {
-    // do something
-}
-
-function getStream() {
-  var constraints = {video: true, audio: true};
-  timer();
-  getUserMedia(constraints, function (stream) {
-    var mediaControl = document.querySelector('video');
-    if (navigator.mozGetUserMedia) {
-      mediaControl.mozSrcObject = stream;
-    } else {
-      mediaControl.srcObject = stream;
-      mediaControl.src = (window.URL || window.webkitURL).createObjectURL(stream);
-    }
-    
-    theStream = stream;
-    try {
-      recorder = new MediaRecorder(stream, {mimeType : "video/webm"});
-    } catch (e) {
-      console.error('Exception while creating MediaRecorder: ' + e);
-      return;
-    }
-    theRecorder = recorder;
-    console.log('MediaRecorder created');
-    recorder.ondataavailable = recorderOnDataAvailable;
-    recorder.start(100);
-  }, function (err) {
-    alert('Error: ' + err);
-  });
-}
-
-function recorderOnDataAvailable (event) {
-  if (event.data.size == 0) return;
-  recordedChunks.push(event.data);
-}
-
-function download() {
-	clearTimeout(t);
-	h1.textContent = "00:00:00";
-    seconds = 0; minutes = 0; hours = 0;
-
-  console.log('Saving data');
-  theRecorder.stop();
-  theStream.getTracks()[0].stop();
-
-  var blob = new Blob(recordedChunks, {type: "video/webm"});
-  var url = (window.URL || window.webkitURL).createObjectURL(blob);
-  var a = document.createElement("a");
-  document.body.appendChild(a);
-  a.style = "display: none";
-  a.href = url;
-  a.download = 'record.webm';
-  a.click();
-  
-  // setTimeout() here is needed for Firefox.
-  setTimeout(function () {
-      (window.URL || window.webkitURL).revokeObjectURL(url);
-  }, 100); 
-}
-    </script>
-
-    
 
 
 </body>
