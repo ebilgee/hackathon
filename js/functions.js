@@ -1362,8 +1362,6 @@ var FUNCT = {};
         FUNCT.countdownTimer(),
         FUNCT.youTubeBgPlayer(),
         FUNCT.maps(),
-        FUNCT.lightBoxFUNCT(),
-        FUNCT.resposniveVideos(),
         FUNCT.tooltip(),
         FUNCT.popover(),
         FUNCT.flickr_widget(),
