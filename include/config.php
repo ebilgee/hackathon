@@ -4,7 +4,10 @@ require_once("mmodel.php");
 
 $mmodel = new Mymodel();
 
-$mmodel->SetWebsiteName('Form');
+$mmodel->SetWebsiteName('ImLive');
+
+//Provide the email address where you want to get notifications
+//$mmodel->SetAdminEmail('erdenebileg@bolorsoft.com');
 					  
 $mmodel->InitDB(/*hostname*/'localhost',
                      /*username*/'root',

@@ -1,3 +1,18 @@
+<?php
+require_once("include/config.php");
+if(!isset($_SESSION)){
+    session_start(); 
+}
+
+if(isset($_POST['submitted']))
+{
+	
+
+   	if($mmodel->RegisterUser())
+   	{
+		//$mmodel->RedirectToURL("");
+   	}
+}?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -180,34 +195,34 @@
 								<h3>Register New Account</h3>
 								<p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
 							</div>
-							<form class="form-transparent-fields">
+							<form class="form-transparent-fields" action='<?php echo $mmodel->GetSelfScript(); ?>' method='post'>
 								<div class="col-md-6 form-group">
 									<label class="sr-only">First Name</label>
-									<input type="text" value="" placeholder="First Name" class="form-control input-lg">
+									<input type="text" value="" placeholder="First Name" class="form-control input-lg" name="firstname">
 								</div>
 								<div class="col-md-6 form-group">
 									<label class="sr-only">Last Name</label>
-									<input type="text" value="" placeholder="Last Name" class="form-control input-lg">
+									<input type="text" value="" placeholder="Last Name" class="form-control input-lg" name="lastname">
 								</div>
 								<div class="col-md-12 form-group">
 									<label class="sr-only">Email</label>
-									<input type="text" value="" placeholder="Email" class="form-control input-lg">
+									<input type="text" value="" placeholder="Email" class="form-control input-lg" name="email">
 								</div>
 								<div class="col-md-12 form-group">
 									<label class="sr-only">Password</label>
-									<input type="password" value="" placeholder="Password" class="form-control input-lg">
+									<input type="password" value="" placeholder="Password" class="form-control input-lg" name="password">
 
 								</div>
 
 								
 								<div class="col-md-12 form-group">
-									<label class="sr-only">County</label>
-									<input type="text" value="" placeholder="State / County" class="form-control input-lg">
+									<label class="sr-only">Country</label>
+									<input type="text" value="" placeholder="Country" class="form-control input-lg" name="country">
 								</div>
+								<input type='hidden' name='submitted' id='submitted' value='1'/>
 								<div class="col-md-12 form-group">
-									<a href="" class="button black-light rounded" >Register New Account </a>
-									<a href="" class="button black-light rounded m-l-10">Cancel</a>
-</div>
+									<input type="submit" class="button black-light rounded" >
+								</div>
 							</form>
 
 							

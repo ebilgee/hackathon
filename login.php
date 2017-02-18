@@ -1,3 +1,20 @@
+<?php
+require_once("include/config.php");
+if(!isset($_SESSION)){
+    session_start(); 
+}
+
+
+if(isset($_POST['submitted']))
+{
+   	if($mmodel->RegisterUser())
+   	{
+		$mmodel->RedirectToURL("");
+   	}
+   	else{
+   		$mmodel->RedirectToURL("");
+   }
+}?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -176,7 +193,7 @@
 			<div class="row">
 				<div class="col-md-3 center">
 					<h3>Login to your Account</h3>
-					<form class="form-grey-fields">
+					<form class="form-grey-fields" action='<?php echo $mmodel->GetSelfScript(); ?>' method='post'>
 						<div class="form-group">
 							<label class="sr-only">Username or Email</label>
 							<input type="text" placeholder="Username or Email" class="form-control">

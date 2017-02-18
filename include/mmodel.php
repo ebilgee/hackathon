@@ -6,6 +6,7 @@ class Mymodel
 {
     var $admin_email;
     var $from_address;
+    
     var $username;
     var $pwd;
     var $database;
@@ -17,7 +18,7 @@ class Mymodel
     //-----Initialization -------
     function Mymodel()
     {
-        $this->sitename = 'ImLive';
+        $this->sitename = 'Form';
         $this->rand_key = '0iQx5oBk66oVZep';
     }
     
@@ -44,33 +45,25 @@ class Mymodel
     {
         $this->rand_key = $key;
     }
-    /**
-     * Хэрэглэгчийн системд бүртгэх, транзакшн арга
-     * @param  $formvars бөглсөн форм дахь өгөгдлүүд
-     * @return амжилттай бүртгэгдвэл true
-     * @since 0.0
-     * @todo бүртгэл хийсний дараа мэйл явуулах аргыг тестлэх
-     */
+
+    
     function RegisterUser()
     {
+
         if(!isset($_POST['submitted']))
         {
            return false;
         }
         
-        /* -- if(!$this->ValidateRegistrationSubmission())
-        {
-            return false;
-        } TODO--*/ 
             
         $this->CollectRegistrationSubmission($formvars);
+
         
         if(!$this->SaveToDatabaseRegistration($formvars))
         {
             return false;
         }
         
-        $this->SendAdminIntimationEmail($formvars);
         
         return true;
     }
@@ -82,13 +75,8 @@ class Mymodel
         $formvars['lastname'] = $this->Sanitize($_POST['lastname']);
         $formvars['email'] = $this->Sanitize($_POST['email']);
         $formvars['password'] = $this->Sanitize($_POST['password']);
-        $formvars['country'] = $this->Sanitize($_POST['gender']);
-        $formvars['brithyear'] = $this->Sanitize($_POST['birthyear']);
-        $formvars['birthmonth'] = $this->Sanitize($_POST['birthmonth']);
-        $formvars['birthday'] = $this->Sanitize($_POST['birthday']);
-        
+        $formvars['country'] = $this->Sanitize($_POST['country']);
     }
-    
     function SaveToDatabaseRegistration(&$formvars)
     {
         //if(!isset($_SESSION['captcha'])) session_start();
@@ -103,6 +91,8 @@ class Mymodel
             $this->HandleError("Имейл хаягаар бүртгүүлсэн байна, 3дагч логин оор орж үзнэ үү");
             return false;
         }
+
+
             
         if(!$this->InsertIntoDBRegistration($formvars))
         {
@@ -112,7 +102,6 @@ class Mymodel
         
         return true;
     }
-
     function InsertIntoDBRegistration(&$formvars)
     {
         $confirmcode = $this->MakeConfirmationMd5($formvars['email']);
@@ -121,77 +110,21 @@ class Mymodel
 
         $passwo = crypt($formvars['password'],'$6$rounds=5000$gyshido$');
 
-        $temparray = array($formvars['brithyear'],$formvars['birthmonth'], $formvars['birthday']);
-        $birthdate = implode("-", $temparray);
-        $provi = '';
-        if($formvars['provider'] == 'Twitter'){
-            $provi = 'login_twitter';
-        }
-        else if($formvars['provider'] == 'Facebook'){
-            $provi = 'login_facebook';
-        }
-        else if($formvars['provider'] == 'Linkedin'){
-            $provi = 'login_linkedin';
-        }
-        else{
-            $provi =='no';
-        }
-        echo $provi . '- '. $formvars['authid'];
-        if(isset($formvars['provider']) AND $provi != 'no' AND isset($formvars['authid']) AND $formvars['authid'] != 'no'){
+        
             $insert_query = 'insert into users(
                 user_name,
                 user_primary_email,
                 user_confirm,
-                user_country_id,
-                user_bio,
-                user_birth_date,
-                user_employment,
-                user_education,
-                '.$provi.'
+                user_country
                 )
                 values
                 (
-                "' . $this->SanitizeForSQL($formvars['firstname']) . '",
-                "' . $this->SanitizeForSQL($formvars['lastname']) . '",
+                "' . $this->SanitizeForSQL($formvars['firstname']) . " " . $this->SanitizeForSQL($formvars['lastname']) . '",
                 "' . $this->SanitizeForSQL($formvars['email']) . '",
-                "' . $passwo . '",
                 "' . $confirmcode . '",
-                "' . $this->SanitizeForSQL($formvars['mobilephone']) . '",
-                "' . $this->SanitizeForSQL($formvars['gender']) . '",
-                "' . $birthdate . '",
-                "' . $this->SanitizeForSQL($formvars['employment']) . '",
-                "' . $this->SanitizeForSQL($formvars['education']) . '",
-                "' . $this->SanitizeForSQL($formvars['authid']) . '"
+                "' . $this->SanitizeForSQL($formvars['country']) . '"
                 )';
-        }
-        else{
-            $insert_query = 'insert into users(
-                user_firstname,
-                user_lastname,
-                user_email,
-                user_password,
-                user_confirmation,
-                user_phone,
-                user_gender,
-                user_birth_date,
-                user_employment,
-                user_education
-                )
-                values
-                (
-                "' . $this->SanitizeForSQL($formvars['firstname']) . '",
-                "' . $this->SanitizeForSQL($formvars['lastname']) . '",
-                "' . $this->SanitizeForSQL($formvars['email']) . '",
-                "' . $passwo . '",
-                "' . $confirmcode . '",
-                "' . $this->SanitizeForSQL($formvars['mobilephone']) . '",
-                "' . $this->SanitizeForSQL($formvars['gender']) . '",
-                "' . $birthdate . '",
-                "' . $this->SanitizeForSQL($formvars['employment']) . '",
-                "' . $this->SanitizeForSQL($formvars['education']) . '"
-                
-                )';
-        }
+       
              
         if(!mysqli_query($this->connection, $insert_query))
         {
@@ -203,48 +136,197 @@ class Mymodel
         if(isset($formvars['provider']) AND $provi != 'no' AND isset($formvars['authid']) AND $formvars['authid'] != 'no'){
            $_SESSION[$this->GetLoginSessionVar()] = $lastid;
         }
-        $insert_query_bank = 'insert into useraccounts(
-                bank_id,
+        $insert_query_bank = 'insert into logins(
                 user_id,
-                user_account_number,
-                user_account_name,
-                user_register_id
+                login_email,
+                login_password
                 )
                 values
                 (
-                "' . $this->SanitizeForSQL($formvars['bankname']) . '",
                 "' . $lastid . '",
-                "' . $this->SanitizeForSQL($formvars['bankaccount']) . '",
-                "' . $this->SanitizeForSQL($formvars['firstname']) . ' '. $this->SanitizeForSQL($formvars['lastname']) .'",1
+                "' . $this->SanitizeForSQL($formvars['email']) . '",
+                "' . $passwo . '"
                 )'; 
+
+        echo $insert_query_bank;
         if(!mysqli_query($this->connection, $insert_query_bank))
         {
             $this->HandleDBError("Error inserting data to the table\nquery:$insert_query_bank");
             return false;
         }
-        if(isset($formvars['provider']) AND $provi != 'no' AND isset($formvars['authid']) AND $formvars['authid'] != 'no'){
-            if(!$this->SendUserWelcomeEmail($formvars)){
-                return false;
-            }
-        }
-        else{
-            if(!$this->SendUserConfirmationEmail($formvars)){
-                return false;
-            }
-        }
+        
 
         return true;
         }
     }
 
 
-    /*---BASE---*/
+     function Login(){
 
+        if(empty($_POST['login_email'])){
+            $this->HandleError("Имэйл хаяг оруулна уу!");
+            return false;
+        }
+        
+        if(empty($_POST['login_password'])){
+            $this->HandleError("Нууц үг оруулна уу!");
+            return false;
+        }
+        
+        $useremail = trim($_POST['login_email']);
+        $password = trim($_POST['login_password']);
+        
+        if(!isset($_SESSION)){ 
+            session_start();
+        }
+
+        if(!$this->CheckLoginInDB($useremail, $password)){
+            return false;
+        }
+        
+        return true;
+    }
+
+    function CheckLoginInDB($useremail,$password)
+    {
+        //echo "".$useremail." - ".$password;
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }          
+
+        $user_email = $useremail;
+        $pssw = crypt($password,'$6$rounds=5000$gyshido$');
+        
+        $qry = "SELECT user_id, user_name FROM users WHERE user_email='$user_email' AND user_password='$pssw'";
+        $result = mysqli_query($this->connection, $qry);
+        if(!$result || mysqli_num_rows($result) <= 0)
+        {
+            $this->HandleError("Имэйл хаяг, нууц үг буруу байна!");
+            return false;
+        }
+        
+        /*$qry1 = "SELECT user_id, user_firstname FROM users WHERE user_email = '$user_email' AND user_password ='$pssw' AND user_confirmation = 'Y'";
+        $result1 = mysqli_query($this->connection, $qry1);
+        if(!$result1 || mysqli_num_rows($result1) <= 0)
+        {
+            $this->HandleError("Имэйл хаягаа баталгаажуулна уу!");
+            return false;
+        }*/
+
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION[$this->GetLoginSessionVar()] = $row['user_id'];
+            
+        return true;
+    }
+
+    
+    //-------Public Helper functions -------------
+    function GetSelfScript()
+    {
+        return htmlentities($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);
+    }    
+    
+    function SafeDisplay($value_name)
+    {
+        if(empty($_POST[$value_name]))
+        {
+            return'';
+        }
+        return htmlentities($_POST[$value_name]);
+    }
+    
+    function RedirectToURL($url)
+    {
+		ob_start();	
+		while (ob_get_status()) 
+		{
+			ob_end_clean();
+		}
+		
+        header("Location: $url");	
+        exit;	
+    }
+    
+    function GetSpamTrapInputName()
+    {
+        return 'sp'.md5('KHGdnbvsgst'.$this->rand_key);
+    }
+    
+    function GetErrorMessage()
+    {
+        if(empty($this->error_message))
+        {
+            return '';
+        }
+
+        return $this->error_message;
+    }    
+    //-------Private Helper functions-----------
+    
+    function HandleError($err)
+    {
+        $this->error_message .= $err."\r\n";
+    }
+    
+    function HandleDBError($err)
+    {
+        $this->HandleError($err."\r\n mysqlerror:".mysql_error());
+    }
+    
+    function GetLoginSessionVar()
+    {
+        $retvar = md5($this->rand_key);
+        $retvar = 'usr_'.substr($retvar,0,10);
+        return $retvar;
+    }
+
+    function GetLoginSessionVarMerchant()
+    {
+        $retvar = md5($this->rand_key);
+        $retvar = 'cli_'.substr($retvar,0,10);
+        return $retvar;
+    }
+    
+    function GetLoginSessionVarAdmin()
+    {
+        $retvar = md5($this->rand_key);
+        $retvar = 'r2d2r2d2'.substr($retvar,0,10);
+        return $retvar;
+    }
+	
+    
+	
+    function IsFieldUnique($formvars,$fieldname)
+    {
+        $field_val = $this->SanitizeForSQL($formvars['email']);
+        $qry = "select user_id from users where $fieldname='".$field_val."'";
+        $result = mysqli_query($this->connection, $qry);   
+        if($result && mysqli_num_rows($result) > 0)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    function IsFieldUniqueNotOwn($formvars,$fieldname)
+    {
+        $field_val = $this->SanitizeForSQL($formvars[$fieldname]);
+        $qry = "select UserId from $this->tablename where $fieldname='".$field_val."' and UserId!=".$_SESSION['id_of_user']." ";
+        $result = mysql_query($qry,$this->connection);   
+        if($result && mysql_num_rows($result) > 0)
+        {
+            return false;
+        }
+        return true;
+    }
+    
     function DBLogin()
     {
 
         $this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
-        
+		
         if(!$this->connection)
         {   
             $this->HandleDBError("Database Login failed! Please make sure that the DB login credentials provided are correct");
@@ -261,17 +343,97 @@ class Mymodel
             return false;
         }
         return true;
-    }
-    function IsFieldUnique($formvars,$fieldname)
-    {
-        $field_val = $this->SanitizeForSQL($formvars['email']);
-        $qry = "select user_created_date from users where $fieldname='".$field_val."'";
-        $result = mysqli_query($this->connection, $qry);   
-        if($result && mysqli_num_rows($result) > 0)
+    }    
+    
+    
+
+    function CheckForgottenLink($i,$inquire){
+        if(!$this->DBLogin())
         {
+            $this->HandleError("Database login failed!");
+            return false;
+        }
+        $qry = "SELECT 1 FROM users WHERE user_email = '$i' AND user_forgotten = '$inquire'";
+        $result = mysqli_query($this->connection, $qry);
+        if(!mysqli_num_rows($result) > 0)
+        {
+            $this->HandleError("Хүсэлт байхгүй байна");
             return false;
         }
         return true;
+    }
+
+    function CheckEmailSendForgotten($email){
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }
+        $qry = "SELECT 1 FROM users WHERE user_email = '$email' AND (user_login_facebook IS NULL AND user_login_linkedin IS NULL AND user_login_google IS NULL)";
+        $result = mysqli_query($this->connection, $qry);
+        if(!mysqli_num_rows($result) > 0)
+        {
+            $this->HandleError("Бүртгэлгүй хэрэглэгч");
+            return false;
+        }
+        if(!$this->SendForgottenEmail($email)){
+            return false;
+        }
+        return true;
+    }
+
+   
+
+    function MakeConfirmationMd5($email)
+    {
+        $randno1 = rand();
+        $randno2 = rand();
+        return md5($email.$this->rand_key.$randno1.''.$randno2);
+    }
+    function SanitizeForSQL($str)
+    {
+        if( function_exists( "mysqli_real_escape_string" ) )
+        {
+              $ret_str = mysqli_real_escape_string($this->connection, $str );
+        }
+        else
+        {
+              $ret_str = addslashes( $str );
+        }
+        return $ret_str;
+    }
+    
+ /*
+    Sanitize() function removes any potential threat from the
+    data submitted. Prevents email injections or any other hacker attempts.
+    if $remove_nl is true, newline chracters are removed from the input.
+    */
+    function Sanitize($str,$remove_nl=true)
+    {
+        $str = $this->StripSlashes($str);
+
+        if($remove_nl)
+        {
+            $injections = array('/(\n+)/i',
+                '/(\r+)/i',
+                '/(\t+)/i',
+                '/(%0A+)/i',
+                '/(%0D+)/i',
+                '/(%08+)/i',
+                '/(%09+)/i'
+                );
+            $str = preg_replace($injections,'',$str);
+        }
+
+        return $str;
+    }    
+    function StripSlashes($str)
+    {
+        if(get_magic_quotes_gpc())
+        {
+            $str = stripslashes($str);
+        }
+        return $str;
     }
 }
 ?>
