@@ -11,3 +11,18 @@
     z-index: 0;
     opacity: 0.8;
 }
+
+.container-fullscreen {
+    padding-top: 0px;
+    height: 100%;
+    width: 100%;
+    display: table;
+    position: relative;
+} 
+
+.fullscreen > .container,
+.halfscreen > .container,
+.fullscreen > .container-fluid,
+.halfscreen > .container-fluid {
+    height: 100%;
+}

@@ -10,6 +10,11 @@ body {
     padding: 0 !important;
 }
 
+body.wide .wrapper {
+    width: 100%;
+    margin: 0;
+}
+
 h1,
 h2,
 h3,
@@ -77,6 +82,7 @@ h5 {
 #header .container {
     position: relative;
 }
+#header.header-transparent + .fullscreen,
 #header.header-dark-transparent + .fullscreen{
     top: -90px;
     margin-bottom: -90px;
@@ -398,4 +404,1459 @@ body.fullscreen-panel-active .fullscreen-panel-overlay-hugeinc {
     transform: translateY(-25%) rotateX(35deg);
     -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
     transition: transform 0.5s, opacity 0.5s;
+}
+
+
+/* ----------------------------------------------------------------
+    CSS UTILITY HELPERS
+-----------------------------------------------------------------*/
+
+.hidden,
+.animated {
+    opacity: 0;
+}
+.visible {
+    opacity: 1;
+}
+.text-center {
+    text-align: center !important;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-right {
+    text-align: right !important;
+}
+.left {
+    float: left !important;
+}
+.right {
+    float: right !important;
+}
+.center {
+    float: none;
+    margin: 0 auto;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+.vertical-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.text-middle {
+    display: table-cell;
+    vertical-align: middle;
+    margin: auto;
+    z-index: 3;
+    position: relative;
+}
+.text-bottom {
+    display: table-cell;
+    vertical-align: bottom;
+    margin: auto;
+    z-index: 3;
+    position: relative;
+}
+.text-background-light {
+    background-color: #fff;
+    padding: 0 4px;
+}
+.text-background-dark {
+    background-color: #444;
+    padding: 0 4px;
+}
+.text-shadow-light {
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.53);
+}
+.text-shadow-dark {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.53);
+}
+.background-white,
+.background-light {
+    background-color: #fff !important;
+}
+.background-grey {
+    background-color: #F6F6F6 !important;
+}
+.background-dark {
+    background-color: #101010 !important;
+}
+
+/*-----------------------------------------------------------------
+    PREDEFINED BUTTONS
+    ---------------------------------------------------------------*/
+
+/* ----------------------------------------------------------------------
+    Buttons
+-------------------------------------------------------------------------*/
+
+.btn {
+  border-radius: 4px;
+  padding: 12px 20px;
+}
+.btn.btn-primary:hover {
+    opacity: 0.8;
+}
+.button + .button,
+.btn + .btn {
+    margin-left: 10px;
+}
+.button {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 100%;
+    margin: 10px 0;
+    outline: 0 none;
+    padding: 18px 36px;
+    position: relative;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: 1px solid #ccc;
+}
+.button:hover:not,
+a.button:hover {
+    opacity: 0.8;
+}
+button:focus {
+    outline: 0;
+}
+.button.effect:hover {
+    opacity: 1;
+}
+.btn-send-icon {
+    padding: 13px 6px 12px 14px;
+}
+.button-light {
+    background-color: #fff;
+    border: 1px solid #eee;
+}
+.button-light,
+.button-light span {
+    color: #111 !important;
+}
+.button-dark {
+    background-color: #111;
+    color: #fff;
+}
+.button-dark:hover {
+    background-color: #333;
+    color: #fff;
+}
+/*Button icons*/
+
+.button i {
+    font-size: 15px;
+    margin-right: 10px;
+}
+.button.icon-left i {
+    margin-right: 10px;
+}
+.button.icon-right i {
+    margin-left: 10px;
+    margin-right: 0;
+}
+.button.small {
+    font-size: 10px;
+    height: 28px;
+    line-height: 24px;
+    padding: 0 14px;
+}
+.button.transparent.small {
+    line-height: 0;
+}
+.button.small i {
+    font-size: 11px;
+    margin-right: 6px;
+}
+.button.small.icon-left i {
+    margin-right: 6px;
+}
+.button.small.icon-right i {
+    margin-left: 6px;
+    margin-right: 0;
+}
+.button.large {
+    font-size: 16px;
+    height: 55px;
+    letter-spacing: 2px;
+    line-height: 52px;
+    padding: 0 32px;
+}
+.button.transparent.large {
+    line-height: 22px;
+}
+.button.border:hover,
+.button.transparent:hover {
+    opacity: 1;
+}
+.button.transparent:hover,
+.button.transparent:hover span,
+.button.transparent:hover i {
+    color: #333 !important;
+}
+.button.full-rounded {
+    border-radius: 50px
+}
+.button.rounded {
+    border-radius: 3px
+}
+.button.fullwidth-button {
+    display: block!important;
+    margin-left: auto!important;
+    margin-right: auto!important
+}
+/*3d buttons*/
+
+.button.button-3d {
+    box-shadow: 0 -3px rgba(0, 0, 0, 0.1) inset;
+}
+.button.button-3d:hover {
+    box-shadow: 0 -3px rgba(0, 0, 0, 0.2) inset;
+}
+/*Border buttons*/
+
+.button.border {
+    color: #333;
+    border: 2px solid #333;
+}
+.button.border:hover {
+    background-color: #333;
+    color: #fff
+}
+.button.border.light {
+    border: 2px solid #fff;
+    color: #fff
+}
+.button.border.light:hover {
+    background-color: #fff;
+    color: #252525
+}
+.button.border.light:hover:hover i {
+    color: #252525
+}
+/*Transparent*/
+
+.button.transparent {
+    background-color: transparent;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: none;
+    color: #fff;
+    letter-spacing: 2px;
+    opacity: 1;
+    padding: 16px 36px;
+    transition: all 0.2s linear 0s;
+}
+.button.transparent:hover,
+.button.transparent:active {
+    background-color: #fff;
+    color: #333;
+}
+.button.fullwidth {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+/*Colors*/
+
+.button.blue,
+.button.blue-dark,
+.button.aqua,
+.button.purple-light,
+.button.purple,
+.button.purple-dark,
+.button.red-dark,
+.button.red,
+.button.red-light,
+.button.red-light,
+.button.pink-dark,
+.button.pink,
+.button.orange-dark,
+.button.orange,
+.button.orange-light,
+.button.yellow,
+.button.green,
+.button.amber,
+.button.brown,
+.button.brown-light,
+.button.black,
+.button.black-light,
+.button.grey-dark {
+    border-color: #000;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.button.blue {
+    background-color: #41a5db;
+    border-color: #3ca0d6;
+}
+.button.blue-dark {
+    background-color: #2b6baa;
+    border-color: #25629f;
+}
+.button.aqua {
+    background-color: #40c0cb;
+    border-color: #3eb5bf;
+}
+.button.purple-light {
+    background-color: #903090;
+    border-color: #892689;
+}
+.button.purple {
+    background-color: #9B175E;
+    border-color: #901155;
+}
+.button.purple-dark {
+    background-color: #5d4157;
+    border-color: #55384f;
+}
+.button.red-dark {
+    background-color: #CA0027;
+    border-color: #b20022;
+}
+.button.red {
+    background-color: #E42D3F;
+    border-color: #d42b3c;
+    color: #fff;
+}
+.button.red-light {
+    background-color: #F05761;
+    border-color: #ed4b55;
+    color: #fff;
+}
+.button.red-light {
+    background-color: #F05761;
+    border-color: #ed4b55;
+    color: #fff;
+}
+.button.pink-dark {
+    background-color: #F51E70;
+    border-color: #e31865;
+}
+.button.pink {
+    background-color: #F772A3;
+    border-color: #f2689b;
+}
+.button.orange-dark {
+    background-color: #e57200;
+    border-color: #d66b00;
+}
+.button.orange {
+    background-color: #F59017;
+    border-color: #e5820b;
+}
+.button.orange-light {
+    background-color: #F7D137;
+    border-color: #edc72b;
+    color: #774f38;
+}
+.button.yellow {
+    background-color: #FFEC00;
+    border-color: #e6d500;
+    color: #333;
+}
+.button.green {
+    background-color: #77A600;
+    border-color: #6e9a00;
+}
+.button.amber {
+    background-color: #eb9c4d;
+    border-color: #d88d42;
+}
+.button.brown {
+    background-color: #774f38;
+    border-color: #714a34;
+}
+.button.brown-light {
+    background-color: #935d3f;
+    border-color: #8b583b;
+}
+.button.black {
+    background-color: #111;
+    border: 0;
+}
+.button.black-light {
+    background-color: #2a2a2a;
+}
+.button.grey-dark {
+    background-color: #404051;
+}
+/*Effects*/
+
+.button.effect {
+    position: relative;
+    overflow: hidden;
+}
+.button,
+.button.effect.fill-vertical:after,
+.button.effect.fill-horizontal:after,
+.button.effect.icon-bottom span,
+.button.effect.icon-bottom i,
+.button.effect.icon-top span,
+.button.effect.icon-top i,
+.button.effect.icon-right span,
+.button.effect.icon-right i,
+.button.effect.icon-left span,
+.button.effect.icon-left i {
+    -webkit-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
+/*Effect icon left*/
+
+.button.effect.icon-left i {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translate(-24px, -50%);
+    -ms-transform: translate(-24px, -50%);
+    transform: translate(-24px, -50%);
+    ms-transform: translate(-24px, -50%);
+    opacity: 0
+}
+.button.effect.icon-left span {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    ms-transform: translate(0, 0);
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    ms-backface-visibility: hidden;
+}
+.button:hover.effect.icon-left span {
+    -webkit-transform: translate(15px, 0);
+    -ms-transform: translate(15px, 0);
+    transform: translate(15px, 0);
+    ms-transform: translate(15px, 0);
+}
+/*Effect Small buttons*/
+
+.button.small.effect.icon-left i {
+    -webkit-transform: translate(-14px, -50%);
+    -ms-transform: translate(-14px, -50%);
+    transform: translate(-14px, -50%);
+}
+.button.small.effect.icon-left:hover span {
+    -webkit-transform: translate(8px, 0px);
+    -ms-transform: translate(8px, 0px);
+    transform: translate(8px, 0px);
+}
+/*Effect icon right*/
+
+.button.effect.icon-right i {
+    position: absolute;
+    display: block;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translate(30px, -50%);
+    -ms-transform: translate(30px, -50%);
+    transform: translate(30px, -50%);
+    ms-transform: translate(30px, -50%);
+    opacity: 0
+}
+.button.effect.icon-right span {
+    width: 100%;
+    height: 100%;
+    display: block;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    ms-transform: translate(0, 0);
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    ms-backface-visibility: hidden;
+}
+.button:hover.effect.icon-right span {
+    -webkit-transform: translate(-15px, 0);
+    -ms-transform: translate(-15px, 0);
+    transform: translate(-15px, 0);
+    ms-transform: translate(-15px, 0);
+}
+/*Effect Small buttons*/
+
+.button.small.effect.icon-right i {
+    -webkit-transform: translate(14px, -50%);
+    -ms-transform: translate(14px, -50%);
+    transform: translate(14px, -50%);
+}
+.button.small.effect.icon-right:hover span {
+    -webkit-transform: translate(-5px, 0px);
+    -ms-transform: translate(-5px, 0px);
+    transform: translate(-5px, 0px);
+}
+/*Effect icon top*/
+
+.button.effect.icon-top i {
+    position: absolute;
+    display: block;
+    top: -30px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    ms-transform: translate(-50%, -50%);
+    opacity: 0;
+}
+.button.effect.icon-top span {
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    ms-backface-visibility: hidden;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    ms-transform: translate(0, 0)
+}
+.button:hover.effect.icon-top span {
+    -webkit-transform: translate(0px, 35px);
+    -ms-transform: translate(0px, 35px);
+    transform: translate(0px, 35px);
+    ms-transform: translate(0px, 35px);
+}
+/*Effect Small buttons*/
+
+.button.small.effect.icon-top i {
+    top: -22px;
+}
+/*Effect large buttons*/
+
+.button.large.effect.icon-top:hover span {
+    -webkit-transform: translate(0px, 54px);
+    -ms-transform: translate(0px, 54px);
+    transform: translate(0px, 54px);
+}
+/*Effect icon bottom*/
+
+.button.effect.icon-bottom i {
+    position: absolute;
+    display: block;
+    bottom: -36px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    ms-transform: translate(-50%, -50%);
+    opacity: 0;
+}
+.button.effect.icon-bottom span {
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    ms-backface-visibility: hidden;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+    ms-transform: translate(0, 0)
+}
+.button:hover.effect.icon-bottom span {
+    -webkit-transform: translate(0px, -27px);
+    -ms-transform: translate(0px, -27px);
+    transform: translate(0px, -27px);
+    ms-transform: translate(0px, -27px);
+}
+/*Effect Small buttons*/
+
+.button.small.effect.icon-bottom i {
+    bottom: -27px;
+}
+/*Effect Large buttons*/
+
+.button.large.effect.icon-bottom:hover span {
+    -webkit-transform: translate(0px, -48px);
+    -ms-transform: translate(0px, -48px);
+    transform: translate(0px, -48px);
+}
+.button:hover.effect.icon-right i,
+.button:hover.effect.icon-left i,
+.button:hover.effect.icon-top i,
+.button:hover.effect.icon-bottom i {
+    opacity: 1;
+}
+/*Effect fill verical*/
+
+.button.effect.fill-vertical,
+.button.effect.fill-horizontal {
+    overflow: hidden;
+}
+.button.effect.fill-vertical span {
+    position: relative;
+    z-index: 1;
+}
+.button.effect.fill-vertical:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(40deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(40deg);
+    transform: translateX(-50%) translateY(-50%) rotate(40deg);
+}
+.button.effect.fill-vertical:hover:after {
+    height: 550%;
+    opacity: 1
+}
+.button.effect.fill-vertical:after {
+    background-color: #252525;
+}
+.button.effect.fill-vertical:hover {
+    color: #fff;
+}
+/*Effect fill horizontal*/
+
+.button.effect.fill-horizontal span {
+    position: relative;
+    z-index: 1;
+}
+.button.effect.fill-horizontal:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(-11%);
+    -ms-transform: translateX(-50%) translateY(-11%);
+    transform: translateX(-50%) translateY(-11%);
+}
+.button.effect.fill-horizontal:hover:after {
+    height: 550%;
+    opacity: 1
+}
+.button.effect.fill-horizontal:after {
+    background-color: #252525;
+}
+.button.effect.fill-horizontal:hover {
+    color: #fff;
+}
+/*Effect fill*/
+
+.button.effect.fill:hover {
+    background-color: #252525;
+    color: #fff;
+}
+/*aqua effect fill-vertical*/
+
+.button.aqua.effect.fill-vertical:after {
+    background-color: #1a9ca7;
+}
+.button.aqua.effect.fill-vertical:hover {
+    color: #fff;
+}
+/*aqua effect fill-horizontal*/
+
+.button.aqua.effect.fill-horizontal:after {
+    background-color: #1a9ca7;
+}
+.button.aqua.effect.fill-horizontal:hover {
+    color: #fff;
+}
+/*aqua effect fill*/
+
+.button.aqua.effect.fill:hover {
+    background-color: #087680;
+}
+/*transparent effect fill-vertical*/
+
+.button.transparent.effect.fill-vertical:after,
+.button.transparent.effect.fill-horizontal:after {
+    background-color: #fff;
+}
+.button.transparent.effect.fill-vertical:hover,
+.button.transparent.effect.fill-horizontal:hover {
+    color: #333;
+}
+/*transparent effect fill*/
+
+.button.transparent.effect.fill:hover {
+    background-color: #fff;
+    color: #333;
+}
+/*Read more button*/
+
+a.read-more {
+    text-transform: uppercase;
+    font-weight: 700;
+    -webkit-transition: all 0.2s ease 0s;
+    -moz-transition: all 0.2s ease 0s;
+    -o-transition: all 0.2s ease 0s;
+    -ms-transition: all 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
+}
+
+/* ----------------------------------------------------------------
+    PREDEFINED TEXT HELPERS
+-----------------------------------------------------------------*/
+
+.text-medium-light {
+    font-size: 50px !important;
+    font-weight: 100;
+    line-height: 1.1;
+}
+.text-medium {
+    font-size: 50px !important;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+body.device-xs .text-medium,
+body.device-xs .text-medium-light {
+    font-size: 40px !important;
+}
+body.device-xxs .text-medium,
+body.device-xxs .text-medium-light {
+    font-size: 30px !important;
+}
+.text-large-light,
+.text-large-light span,
+.text-large-light span span {
+    font-size: 90px !important;
+    line-height: 100px !important;
+    font-weight: 120 !important;
+}
+.text-large,
+.text-large span,
+.text-large span span {
+    font-size: 90px !important;
+    line-height: 110px !important;
+    font-weight: 800 !important;
+}
+.text-extra-large,
+.text-extra-large span {
+    font-size: 120px !important;
+    font-weight: 800;
+    line-height: 120px;
+}
+.text-lg,
+.text-lg span {
+    color: #ffffff;
+    font-size: 80px;
+    line-height: 80px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+.text-lg-x2,
+.text-lg-x2 span {
+    color: #ffffff;
+    font-size: 120px;
+    line-height: 140px;
+    font-weight: 100;
+    margin-bottom: 10px;
+}
+.text-lg-x3,
+.text-lg-x3 span {
+    color: #ffffff;
+    font-size: 230px;
+    line-height: 250px;
+    font-weight: 100;
+}
+.text-small {
+    font-size: 16px !important;
+    font-weight: 800;
+    line-height: 1.1;
+}
+.text-muted {
+    color: #c2c2c5;
+}
+.text-bold {
+    font-weight: bold !important;
+}
+.text-azure {
+    color: #0095C8 !important;
+}
+.text-orange {
+    color: #FF6600 !important;
+}
+.text-green {
+    color: #1FBBA6 !important;
+}
+.text-blue {
+    color: #5F8295 !important;
+}
+.text-pink {
+    color: #DD5A82 !important;
+}
+.text-purple {
+    color: #DD5A82 !important;
+}
+.text-bricky {
+    color: #894550 !important;
+}
+.text-yellow {
+    color: #FFB848 !important;
+}
+.text-red {
+    color: #C82E29 !important;
+}
+.text-light,
+.text-light h1,
+.text-light h2,
+.text-light h3,
+.text-light h4,
+.text-light h5,
+.text-light h6,
+.text-light .lead,
+.text-light p,
+.text-light a:not(.button),
+.text-light i,
+.text-light li,
+.text-light label,
+.text-light div:not(.alert),
+.text-light span {
+    color: #fff !important;
+}
+.text-dark,
+.text-dark h1,
+.text-dark h2,
+.text-dark h3,
+.text-dark h4,
+.text-dark h5,
+.text-dark h6,
+.text-dark p,
+.text-dark .lead,
+.text-dark a:not(.button),
+.text-dark i,
+.text-dark li,
+.text-dark label,
+.text-dark div:not(.alert),
+.text-dark span {
+    color: #111 !important;
+}
+.text-grey,
+.text-grey h1,
+.text-grey h2,
+.text-grey h3,
+.text-grey h4,
+.text-grey h5,
+.text-grey h6,
+.text-grey .lead,
+.text-grey p,
+.text-grey a:not(.button),
+.text-grey i,
+.text-grey li,
+.text-grey label,
+.text-grey div:not(.alert),
+.text-grey span {
+    color: #ccc;
+}
+.with-errors li {
+    color: #981a1a !important;
+}
+
+/*font weight*/
+
+.font-wight-100 {
+    font-weight: 100 !important;
+}
+.font-wight-300 {
+    font-weight: 300 !important;
+}
+.font-wight-400 {
+    font-weight: 400 !important;
+}
+.font-wight-500 {
+    font-weight: 500 !important;
+}
+.font-wight-600 {
+    font-weight: 600 !important;
+}
+.font-wight-700 {
+    font-weight: 700 !important;
+}
+.font-wight-800 {
+    font-weight: 800 !important;
+}
+
+/* ----------------------------------------------------------------
+    PREDEFINED MARGIN & PADDING CLASSES
+-----------------------------------------------------------------*/
+
+.border-left {
+    border-left: 1px solid #eee;
+}
+.border-top {
+    border-top: 1px solid #eee;
+}
+.border-right {
+    border-width: 0 1px 0 0;
+    border-color: #eee;
+    border-style: solid;
+}
+.border-bottom {
+    border-bottom: 1px solid #eee;
+}
+.border-dotted {
+    border-style: dotted;
+}
+.slider-size-half {
+    max-height: 560px;
+}
+.no-margin {
+    margin: 0px!important
+}
+.m-b-0 {
+    margin-bottom: 0px !important
+}
+.m-b-5 {
+    margin-bottom: 5px!important
+}
+.m-b-10 {
+    margin-bottom: 10px!important
+}
+.m-b-15 {
+    margin-bottom: 15px!important
+}
+.m-b-20 {
+    margin-bottom: 20px!important
+}
+.m-b-25 {
+    margin-bottom: 25px!important
+}
+.m-b-30 {
+    margin-bottom: 30px!important
+}
+.m-b-35 {
+    margin-bottom: 35px!important
+}
+.m-b-40 {
+    margin-bottom: 40px!important
+}
+.m-b-50 {
+    margin-bottom: 50px!important
+}
+.m-b-60 {
+    margin-bottom: 60px!important
+}
+.m-b-70 {
+    margin-bottom: 70px!important
+}
+.m-b-80 {
+    margin-bottom: 80px!important
+}
+.m-b-90 {
+    margin-bottom: 90px!important
+}
+.m-b-100 {
+    margin-bottom: 100px!important
+}
+.m-b-150 {
+    margin-bottom: 150px!important
+}
+.m-b-200 {
+    margin-bottom: 200px!important
+}
+.m-t-0 {
+    margin-top: 0px!important
+}
+.m-t-5 {
+    margin-top: 5px!important
+}
+.m-t-10 {
+    margin-top: 10px!important
+}
+.m-t-15 {
+    margin-top: 15px!important
+}
+.m-t-20 {
+    margin-top: 20px!important
+}
+.m-t-25 {
+    margin-top: 25px!important
+}
+.m-t-30 {
+    margin-top: 30px!important
+}
+.m-t-35 {
+    margin-top: 35px!important
+}
+.m-t-40 {
+    margin-top: 40px!important
+}
+.m-t-50 {
+    margin-top: 50px!important
+}
+.m-t-60 {
+    margin-top: 60px!important
+}
+.m-t-70 {
+    margin-top: 70px!important
+}
+.m-t-80 {
+    margin-top: 80px!important
+}
+.m-t-90 {
+    margin-top: 90px!important
+}
+.m-t-100 {
+    margin-top: 100px!important
+}
+.m-l-0 {
+    margin-left: 0px!important;
+}
+.m-l-5 {
+    margin-left: 5px!important
+}
+.m-l-10 {
+    margin-left: 10px!important
+}
+.m-l-15 {
+    margin-left: 15px!important
+}
+.m-l-20 {
+    margin-left: 20px!important
+}
+.m-l-25 {
+    margin-left: 25px!important
+}
+.m-l-30 {
+    margin-left: 30px!important
+}
+.m-l-35 {
+    margin-left: 35px!important
+}
+.m-l-40 {
+    margin-left: 40px!important
+}
+.m-l-50 {
+    margin-left: 50px!important
+}
+.m-l-60 {
+    margin-left: 60px!important
+}
+.m-l-70 {
+    margin-left: 70px!important
+}
+.m-l-80 {
+    margin-left: 80px!important
+}
+.m-l-90 {
+    margin-left: 90px!important
+}
+.m-l-100 {
+    margin-left: 100px!important
+}
+.m-r-0 {
+    margin-right: 0px!important
+}
+.m-r-5 {
+    margin-right: 5px !important;
+}
+.m-r-10 {
+    margin-right: 10px!important
+}
+.m-r-15 {
+    margin-right: 15px!important
+}
+.m-r-20 {
+    margin-right: 20px!important
+}
+.m-r-25 {
+    margin-right: 25px!important
+}
+.m-r-30 {
+    margin-right: 30px!important
+}
+.m-r-35 {
+    margin-right: 35px!important
+}
+.m-r-40 {
+    margin-right: 40px!important
+}
+.m-r-50 {
+    margin-right: 50px!important
+}
+.m-r-60 {
+    margin-right: 60px!important
+}
+.m-r-70 {
+    margin-right: 70px!important
+}
+.m-r-80 {
+    margin-right: 80px!important
+}
+.m-r-90 {
+    margin-right: 90px!important
+}
+.m-r-100 {
+    margin-right: 100px!important
+}
+.m-0 {
+    margin: 0px!important;
+}
+.m-5 {
+    margin: 5px!important
+}
+.m-10 {
+    margin: 10px!important
+}
+.m-15 {
+    margin: 15px!important
+}
+.m-20 {
+    margin: 20px!important
+}
+.m-25 {
+    margin: 25px!important
+}
+.m-30 {
+    margin: 30px!important
+}
+.m-35 {
+    margin: 35px!important
+}
+.m-40 {
+    margin: 40px!important
+}
+.m-50 {
+    margin: 50px!important
+}
+.m-60 {
+    margin: 60px!important
+}
+.m-70 {
+    margin: 70px!important
+}
+.m-80 {
+    margin: 80px!important
+}
+.m-90 {
+    margin: 90px!important
+}
+.m-100 {
+    margin: 100px!important
+}
+
+/*Margins*/
+
+.col-no-margin [class^="col-"] {
+    margin: 0!important;
+    padding: 0 !important;
+}
+.row.col-no-margin {
+    margin: 0!important;
+}
+.row.col-small-margins [class^="col-"] {
+    margin: 0 0 20px 0 !important;
+}
+.no-padding-top {
+    padding-top: 0 !important;
+}
+.no-padding-bottom {
+    padding-bottom: 0 !important;
+}
+.no-padding {
+    padding: 0 !important;
+}
+.p-0 {
+    padding: 0px!important;
+}
+.p-5 {
+    padding: 5px!important
+}
+.p-10 {
+    padding: 10px!important
+}
+.p-15 {
+    padding: 15px!important
+}
+.p-20 {
+    padding: 20px!important
+}
+.p-25 {
+    padding: 25px!important
+}
+.p-30 {
+    padding: 30px!important
+}
+.p-35 {
+    padding: 35px!important
+}
+.p-40 {
+    padding: 40px!important
+}
+.p-50 {
+    padding: 50px!important
+}
+.p-60 {
+    padding: 60px!important
+}
+.p-70 {
+    padding: 70px!important
+}
+.p-80 {
+    padding: 80px!important
+}
+.p-90 {
+    padding: 90px!important
+}
+.p-100 {
+    padding: 100px!important
+}
+.p-b-0 {
+    padding-bottom: 0px!important
+}
+.p-b-5 {
+    padding-bottom: 5px!important
+}
+.p-b-10 {
+    padding-bottom: 10px!important
+}
+.p-b-15 {
+    padding-bottom: 15px!important
+}
+.p-b-20 {
+    padding-bottom: 20px!important
+}
+.p-b-25 {
+    padding-bottom: 25px!important
+}
+.p-b-30 {
+    padding-bottom: 30px!important
+}
+.p-b-35 {
+    padding-bottom: 35px!important
+}
+.p-b-40 {
+    padding-bottom: 40px!important
+}
+.p-b-50 {
+    padding-bottom: 50px!important
+}
+.p-b-60 {
+    padding-bottom: 60px!important
+}
+.p-b-70 {
+    padding-bottom: 70px!important
+}
+.p-b-80 {
+    padding-bottom: 80px!important
+}
+.p-b-90 {
+    padding-bottom: 90px!important
+}
+.p-b-100 {
+    padding-bottom: 100px!important
+}
+.p-b-150 {
+    padding-bottom: 150px!important
+}
+.p-b-200 {
+    padding-bottom: 200px!important
+}
+.p-t-0 {
+    padding-top: 0px!important
+}
+.p-t-5 {
+    padding-top: 5px!important
+}
+.p-t-10 {
+    padding-top: 10px!important
+}
+.p-t-15 {
+    padding-top: 15px!important
+}
+.p-t-20 {
+    padding-top: 20px!important
+}
+.p-t-25 {
+    padding-top: 25px!important
+}
+.p-t-30 {
+    padding-top: 30px!important
+}
+.p-t-35 {
+    padding-top: 35px!important
+}
+.p-t-40 {
+    padding-top: 40px!important
+}
+.p-t-50 {
+    padding-top: 50px!important
+}
+.p-t-60 {
+    padding-top: 60px!important
+}
+.p-t-70 {
+    padding-top: 70px!important
+}
+.p-t-80 {
+    padding-top: 80px!important
+}
+.p-t-90 {
+    padding-top: 90px!important
+}
+.p-t-100 {
+    padding-top: 100px!important
+}
+.p-t-150 {
+    padding-top: 150px!important
+}
+.p-t-200 {
+    padding-top: 200px!important
+}
+.p-r-0 {
+    padding-right: 0px!important
+}
+.p-r-5 {
+    padding-right: 5px!important
+}
+.p-r-10 {
+    padding-right: 10px!important
+}
+.p-r-15 {
+    padding-right: 15px!important
+}
+.p-r-20 {
+    padding-right: 20px!important
+}
+.p-r-25 {
+    padding-right: 25px!important
+}
+.p-r-30 {
+    padding-right: 30px!important
+}
+.p-r-35 {
+    padding-right: 35px!important
+}
+.p-r-40 {
+    padding-right: 40px!important
+}
+.p-r-50 {
+    padding-right: 50px!important
+}
+.p-r-60 {
+    padding-right: 60px!important
+}
+.p-r-70 {
+    padding-right: 70px!important
+}
+.p-r-80 {
+    padding-right: 80px!important
+}
+.p-r-90 {
+    padding-right: 90px!important
+}
+.p-r-100 {
+    padding-right: 100px!important
+}
+.p-l-0 {
+    padding-left: 0px!important
+}
+.p-l-5 {
+    padding-left: 5px!important
+}
+.p-l-10 {
+    padding-left: 10px!important
+}
+.p-l-15 {
+    padding-left: 15px!important
+}
+.p-l-20 {
+    padding-left: 20px!important
+}
+.p-l-25 {
+    padding-left: 25px!important
+}
+.p-l-30 {
+    padding-left: 30px!important
+}
+.p-l-35 {
+    padding-left: 35px!important
+}
+.p-l-40 {
+    padding-left: 40px!important
+}
+.p-l-50 {
+    padding-left: 50px!important
+}
+.p-l-60 {
+    padding-left: 60px!important
+}
+.p-l-70 {
+    padding-left: 70px!important
+}
+.p-l-80 {
+    padding-left: 80px!important
+}
+.p-l-90 {
+    padding-left: 90px!important
+}
+.p-l-100 {
+    padding-left: 100px!important
+}
+
+/*Border radious*/
+
+.b-r-2 {
+    border-radius: 2px !important;
+}
+.b-r-3 {
+    border-radius: 3px !important;
+}
+.b-r-4 {
+    border-radius: 4px !important;
+}
+.b-r-5 {
+    border-radius: 5px !important;
+}
+.b-r-6 {
+    border-radius: 6px !important;
+}
+.b-r-7 {
+    border-radius: 7px !important;
+}
+.b-r-8 {
+    border-radius: 8px !important;
+}
+.b-r-9 {
+    border-radius: 9px !important;
+}
+.b-r-10 {
+    border-radius: 10px !important;
+}
+.b-radius {
+    border-radius: 50% !important;
+}
+
+/*Floats*/
+
+.float-right {
+    float: right !important;
+}
+.float-left {
+    float: left !important;
+}
+.float-none {
+    float: none !important;
+}
+.fullwidth {
+    width: 100% !important;
 }
