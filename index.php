@@ -39,6 +39,14 @@
 						</a>
 					</div>
 
+					<!--MOBILE MENU -->
+					<div class="nav-main-menu-responsive">
+						<button style="position: absolute;right: 30px;top: 40px;" class="lines-button x" type="button" data-toggle="collapse" data-target=".main-menu-collapse">
+							<span class="lines"></span>
+						</button>
+					</div>
+					<!--END: MOBILE MENU -->
+
 					<!--NAVIGATION-->
 					<div class="navbar-collapse collapse main-menu-collapse navigation-wrap">
 						<div class="container">

@@ -35,7 +35,7 @@ if($mmodel->CheckLogin())
 	</head>
 
 
-<body class="wide" onload="getStream()">
+<body class="wide" >
 	
 
 	<!-- WRAPPER -->
@@ -186,7 +186,7 @@ if($mmodel->CheckLogin())
 <section id="page-title" class="background-dark text-light no-padding">
     <div class="container">
         <div class="page-title col-md-8" style="margin-top:15px">
-            <h1 >Live: Paris Eiffel Tower/France</h1>
+            <h1 >Live: Omaha Nebraska</h1>
             
         </div>
         
@@ -199,15 +199,14 @@ if($mmodel->CheckLogin())
 <section>
 	<div class="container">
 		<div class="col-md-11" style=" text-align:center">
-			 <video autoplay style="height:480px; width: 640px;" ></video>
-      			<p><button class="btn btn-lg btn-primary" >Grab video & start recording</button></p>
-     		 <p><button class="btn btn-lg btn-primary" onclick="download()">Download!</button></p>
+			 <video autoplay style="height:500px; width: 720px;" id="vid"></video>
+			 <h1 id="timerdd"><time>00:00:00</time></h1>
+      			<p><button class="btn btn-lg btn-primary" onclick="getStream()">Start Record</button><button class="btn btn-lg btn-primary" onclick="download()">Finish & Download!</button></p>
 		</div>
 		
 
 		<div class="col-md-12" style="margin-top:80px">
-		<p>Constructed from 1887–89 as the entrance to the 1889 World's Fair, it was initially criticized by some of France's leading artists and intellectuals for its design, but it has become a global cultural icon of France and one of the most recognisable structures in the world.[3] The Eiffel Tower is the most-visited paid monument in the world; 6.91 million people ascended it in 2015.</p><p>
-			The tower is 324 metres (1,063 ft) tall, about the same height as an 81-storey building, and the tallest structure in Paris. Its base is square, measuring 125 metres (410 ft) on each side. During its construction, the Eiffel Tower surpassed the Washington Monument to become the tallest man-made structure in the world, a title it held for 41 years until the Chrysler Building in New York City was finished in 1930. Due to the addition of a broadcasting aerial at the top of the tower in 1957, it is now taller than the Chrysler Building by 5.2 metres (17 ft). Excluding transmitters, the Eiffel Tower is the second-tallest structure in France after the Millau Viaduct.</p>
+		
 
 		</div>
 	</div>
@@ -216,6 +215,33 @@ if($mmodel->CheckLogin())
 
 
 </div>
+<script type="text/javascript">
+    	
+var h1 = document.getElementById('timerdd'),
+    seconds = 0, minutes = 0, hours = 0,
+    t;
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    
+    h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+function timer() {
+    t = setTimeout(add, 1000);
+}
+
+
+    </script>
  <script>
       
       function getUserMedia(options, successCallback, failureCallback) {
@@ -231,8 +257,25 @@ var theStream;
 var theRecorder;
 var recordedChunks = [];
 
+var video = document.querySelector("#vid");
+ 
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+ 
+if (navigator.getUserMedia) {       
+    navigator.getUserMedia({video: true}, handleVideo, videoError);
+}
+ 
+function handleVideo(stream) {
+    video.src = window.URL.createObjectURL(stream);
+}
+ 
+function videoError(e) {
+    // do something
+}
+
 function getStream() {
   var constraints = {video: true, audio: true};
+  timer();
   getUserMedia(constraints, function (stream) {
     var mediaControl = document.querySelector('video');
     if (navigator.mozGetUserMedia) {
@@ -258,12 +301,20 @@ function getStream() {
   });
 }
 
+function Record(){
+
+}
+
 function recorderOnDataAvailable (event) {
   if (event.data.size == 0) return;
   recordedChunks.push(event.data);
 }
 
 function download() {
+	clearTimeout(t);
+	h1.textContent = "00:00:00";
+    seconds = 0; minutes = 0; hours = 0;
+
   console.log('Saving data');
   theRecorder.stop();
   theStream.getTracks()[0].stop();
@@ -283,6 +334,8 @@ function download() {
   }, 100); 
 }
     </script>
+
+    
 
 
 </body>
