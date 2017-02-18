@@ -397,6 +397,7 @@ class PHPMailer {
     $header .= $this->CreateHeader();
     $body = $this->CreateBody();
 
+  
     if($body == '') {
       return false;
     }

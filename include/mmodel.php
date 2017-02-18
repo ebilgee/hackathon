@@ -148,17 +148,69 @@ class Mymodel
                 "' . $passwo . '"
                 )'; 
 
-        echo $insert_query_bank;
         if(!mysqli_query($this->connection, $insert_query_bank))
         {
             $this->HandleDBError("Error inserting data to the table\nquery:$insert_query_bank");
             return false;
         }
-        
+        if(!$this->SendUserConfirmationEmail($formvars)){
+                return false;
+            }
 
         return true;
         }
     }
+
+    function SendUserConfirmationEmail(&$formvars)
+    {
+        $mailer = new PHPMailer();
+        
+        $mailer->CharSet = 'utf-8';
+        
+        $mailer->AddAddress($formvars['email'],$formvars['email']);
+        
+        $mailer->Subject = $this->sitename . "- Confirmation";
+
+        $mailer->From = $this->GetFromAddress();
+
+        $mailer->IsHTML(true);      
+        
+        $confirmcode = $formvars['confirmcode'];
+        
+        $confirm_url = $this->GetAbsoluteURLFolder().'/../confirmreg.php?code='.$confirmcode;
+        
+        $mailer->Body ='Please confirm your registration click the following link <br><br> <a href="'.$confirm_url.'">'.$confirm_url.'</a>';
+
+        if(!$mailer->Send())
+        {
+            $this->HandleError("Failed sending registration confirmation email.");
+            
+            return false;
+        }
+        
+        return true;
+        
+    }
+
+    function GetFromAddress()
+    {
+        if(!empty($this->from_address))
+        {
+            return $this->from_address;
+        }
+
+        $from ="bilgeevrw@gmail.com";
+        
+        return $from;
+    } 
+
+    function GetAbsoluteURLFolder()
+    {
+        $scriptFolder = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
+        $scriptFolder .= $_SERVER['HTTP_HOST'] . dirname($_SERVER['REQUEST_URI']);
+        return $scriptFolder;
+    }
+
     function CheckLogin()
     {   
         if(!isset($_SESSION)){
@@ -225,7 +277,8 @@ class Mymodel
         $pssw = crypt($password,'$6$rounds=5000$gyshido$');
         
         $qry = "SELECT user_id FROM logins WHERE login_email='$user_email' AND login_password='$pssw'";
-        echo $qry;
+        
+
         $result = mysqli_query($this->connection, $qry);
         if(!$result || mysqli_num_rows($result) <= 0)
         {
