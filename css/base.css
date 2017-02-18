@@ -14,6 +14,62 @@ body.wide .wrapper {
     width: 100%;
     margin: 0;
 }
+@media (max-width: 479px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+/*Wide (default)*/
+
+body.wide .wrapper {
+    width: 100%;
+    margin: 0;
+}
+
+/*Boxed*/
+
+body.boxed .wrapper,
+body.boxed-simple .wrapper {
+    position: relative;
+    border: 1px solid #eee;
+    background-color: #fff;
+}
+body.outter {
+    margin: 30px;
+}
+body.boxed-simple {
+    background-color: #f8f8f8;
+    border: 0 none !important;
+}
+
+/* Responsive */
+
+@media (max-width: 479px) {
+    body {
+        font-size: 13px;
+    }
+    body.outter {
+        margin: 0px;
+    }
+}
+a {
+    color: #111;
+    text-decoration: none !important;
+}
+a:focus {
+    outline: none;
+}
+audio,
+canvas,
+progress,
+video {
+    display: inline-block;
+    vertical-align: baseline;
+}
+iframe {
+    border: none;
+}
 
 h1,
 h2,
