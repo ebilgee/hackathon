@@ -150,6 +150,82 @@ header.header-dark:not(.header-navigation-light) .main-menu ul li.dropdown:not(.
     border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
+/* ----------------------------------------------------------------
+    Sticky Header
+-----------------------------------------------------------------*/
+
+#header.header-sticky #header-wrap {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 199;
+}
+#header,
+#header-wrap,
+#logo img,
+#header.header-sticky:not(.header-static) nav#mainMenu ul.main-menu,
+#mainMenu > ul,
+#header .side-panel-button {
+    height: 90px;
+}
+#side-panel #mainMenu > ul {
+    height: auto !important;
+}
+#header,
+#header:not(.header-static) #header-wrap,
+#header #logo img,
+#header.header-sticky:not(.header-static) nav#mainMenu ul.main-menu,
+#mainMenu > ul,
+#header.header-sticky:not(.header-static),
+#header .side-panel-button {
+    transition: opacity .3s ease, height .4s ease;
+    -webkit-transition: opacity .3s ease, height .4s ease;
+    -o-transition: opacity .3s ease, height .4s ease;
+}
+#header #top-search a i,
+#header #shopping-cart > a > i,
+#header #shopping-cart .shopping-cart-items {
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#header.header-sticky:not(.header-static),
+#header.header-sticky:not(.header-static) #header-wrap,
+#header.header-sticky:not(.header-static) #logo img,
+#header.header-sticky:not(.header-static) nav#mainMenu ul.main-menu,
+#header.header-sticky:not(.header-static) #mainMenu > ul > li > a,
+#header.header-sticky:not(.header-static) #shopping-cart a,
+#header.header-sticky:not(.header-static) #top-search a,
+#header.header-sticky:not(.header-static) .side-panel-button {
+    height: 60px;
+}
+#header.header-sticky:not(.header-static) #side-panel nav#mainMenu ul.main-menu,
+#header.header-sticky:not(.header-static) #side-panel #mainMenu > ul > li > a {
+    height: auto !important;
+}
+#header.header-sticky:not(.header-static) #mainMenu > ul > li > a {
+    line-height: 40px;
+}
+#header.header-sticky:not(.header-static) #side-panel #mainMenu > ul > li > a {
+    line-height: auto !important;
+}
+#header.header-sticky:not(.header-static) #top-search a:before {
+    top: 16px;
+}
+#header.header-sticky:not(.header-static) #top-search a i,
+#header.header-sticky:not(.header-static) #shopping-cart > a > i {
+    line-height: 58px;
+}
+#header.header-sticky:not(.header-static) #shopping-cart .shopping-cart-items {
+    top: 17px;
+}
+#header.header-sticky:not(.header-static) #top-search form input {
+    font-size: 20px;
+}
+
 
 /*----*/
 .navigation-wrap {
